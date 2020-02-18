@@ -22,12 +22,12 @@ input {
   width: 100%;
   max-height: 50px;
   border-radius: 40px;
-  font-size: 12pt;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
   font-family: Roboto, sans-serif;
-  padding: 2px 20px;
+  padding: 2px 15px;
 
   border: none;
-  background: #fff url("../assets/search.svg") no-repeat scroll 90%;
+  background: #fff url("../assets/search.svg") no-repeat scroll 95%;
 }
 </style>

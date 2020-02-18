@@ -22,8 +22,8 @@ export default {
     position: relative;
     min-width: 275px;
     width: 100%;
-    height: 150px;
-    background: radial-gradient(#002b40, #021b24);
+    height: 180px;
+    background: radial-gradient(#003149, #021b24);
   }
 
   .logo-container {
@@ -37,7 +37,7 @@ export default {
 
   .header-bg-left {
     float: left;
-    margin-left: -10px;
+    margin-left: -5px;
   }
 
   .header-bg-right {
@@ -46,11 +46,11 @@ export default {
   }
 
   img {
-    max-height: 150px;
+    max-height: 180px;
   }
 
   img.header-logo {
-    height: 60px;
-    margin-top: 35px;
+    height: 55px;
+    margin-top: 55px;
   }
 </style>

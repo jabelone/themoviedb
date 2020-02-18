@@ -17,7 +17,7 @@ export default {
     text-align: left;
     font-weight: bold;
     font-size: 14pt;
-    padding-top: 30px;
+    padding-top: 40px;
     padding-bottom: 10px;
   }
 </style>

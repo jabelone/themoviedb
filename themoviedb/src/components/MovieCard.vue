@@ -16,7 +16,7 @@ export default {
   data: () => ({
     movieName: 'Avengers Infinity War blah blah blahblah blah blahblah blah blah',
     movieDate: 'April 2019',
-    movieRating: 95,
+    movieRating: 83,
   }),
 };
 </script>
@@ -48,9 +48,10 @@ export default {
   }
 
   .movie-rating {
-    position: relative;
-    top: 9%;
-    left: 7%;
+    font-family: Roboto, sans-serif;
+    position: absolute;
+    top: 4%;
+    left: 8%;
     background-color: #00d76c;
     width: 40px;
 

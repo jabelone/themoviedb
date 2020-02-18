@@ -42,7 +42,7 @@ export default {
     margin: -20px auto auto;
     height: 40px;
     position: relative;
-    max-width: 80vw;
+    max-width: 84vw;
   }
 
   .lower-container {
@@ -50,7 +50,7 @@ export default {
   }
 
   .inner-lower-container {
-    padding: 0 10px;
+    padding: 0 20px;
   }
 
   .movie-card-container {
@@ -60,5 +60,6 @@ export default {
 
   .movie-card {
     padding-right: 10px;
+    position: relative;
   }
 </style>
