@@ -4,9 +4,22 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+<top-header/>
     <router-view/>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import TopHeader from '@/components/TopHeader.vue';
+
+export default {
+  name: 'Home',
+  components: {
+    TopHeader,
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
