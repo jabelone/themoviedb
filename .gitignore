@@ -89,3 +89,5 @@ typings/
 
 # My custom additions
 .idea
+
+.DS_Store
