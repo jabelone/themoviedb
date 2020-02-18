@@ -12,6 +12,9 @@
         <div class="movie-card-container">
           <movie-card class="movie-card"/>
         </div>
+        <div class="movie-card-container">
+          <movie-card class="movie-card"/>
+        </div>
       </div>
     </div>
   </div>
@@ -42,11 +45,14 @@ export default {
     margin: -20px auto auto;
     height: 40px;
     position: relative;
-    max-width: 84vw;
+    width: 84vw;
+    max-width: 600px;
   }
 
   .lower-container {
     width: 100%;
+    max-width: 600px;
+    margin: auto;
   }
 
   .inner-lower-container {
@@ -56,6 +62,17 @@ export default {
   .movie-card-container {
     display: inline-block;
     width: 50%;
+    float: left;
+    padding-bottom: 20px;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .movie-card-container {
+      display: inline-block;
+      width: 33%;
+      float: left;
+      padding-bottom: 20px;
+    }
   }
 
   .movie-card {
