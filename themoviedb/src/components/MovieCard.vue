@@ -86,7 +86,7 @@ export default {
     position: absolute;
     top: 2%;
     left: 3%;
-    background-color: #00d76c;
+    background-color: #01D277;
     width: 40px;
 
     border-radius: 8px;

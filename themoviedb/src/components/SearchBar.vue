@@ -28,7 +28,7 @@ export default {
 <!-- This CSS is scoped to just this component -->
 <style scoped lang="scss">
   input {
-    color: #00d76c;
+    color: #01D277;
     height: 100%;
     width: 100%;
     max-height: 50px;
@@ -43,19 +43,19 @@ export default {
   }
 
   input::placeholder {
-    color: #00d76c;
+    color: #01D277;
   }
 
   input::-webkit-input-placeholder {
-    color: #00d76c;
+    color: #01D277;
   }
 
   input::-moz-placeholder {
-    color: #00d76c;
+    color: #01D277;
   }
 
   input::placeholder {
-    color: #00d76c;
+    color: #01D277;
   }
 
   input:focus {
