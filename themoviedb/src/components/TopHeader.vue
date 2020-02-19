@@ -59,3 +59,17 @@ export default {
     margin-top: 55px;
   }
 </style>
+
+<!-- Apparently Safari doesn't like floats used in the way above so this fixes it. -->
+<style scoped>
+  @media not all and (min-resolution:.001dpcm) { @media {
+    .header-bg-left {
+      position: absolute;
+      left: -41%;
+    }
+
+    .header-bg-right {
+      position: absolute;
+    }
+  }}
+  </style>
