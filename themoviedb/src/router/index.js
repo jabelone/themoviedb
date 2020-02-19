@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 
 // eslint-disable-next-line no-unused-vars
 window.TMDB_API_TOKEN = '6ed12e064b90ae1290fa326ce9e790ff';
-window.TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/original/';
+window.TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/original';
 
 // All of our application routes and page metadata are defined here
 const routes = [

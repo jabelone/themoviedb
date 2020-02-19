@@ -1,7 +1,7 @@
 <!-- This component will display a movie poster. -->
 
 <template>
-  <img :src='movieBackdrop' class="movie-poster" :alt="'Movie poster'"/>
+  <img :src='movieBackdrop' class="movie-backdrop" :alt="'Movie poster'"/>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
       /**
          * Returns the full URL to the movie poster.
          */
-      return this.backdrop ? window.TMDB_IMAGE_BASE + this.poster : noBackdrop;
+      return this.backdrop ? window.TMDB_IMAGE_BASE + this.backdrop : noBackdrop;
     },
   },
 };
@@ -28,6 +28,5 @@ export default {
 <style scoped lang="scss">
   img {
     width: 100%;
-    border-radius: 7px;
   }
 </style>
