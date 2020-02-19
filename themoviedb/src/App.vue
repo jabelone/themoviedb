@@ -1,7 +1,9 @@
 <template>
-<!--  This is our main application container, everything inside of #app is controlled by Vue -->
+  <!--  This is our main application container, everything inside of #app is controlled by Vue -->
   <div id="app">
-    <router-view/>
+    <transition name="fade">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -24,14 +26,23 @@ export default {
 
 <!-- The following CSS is *not* scoped so it applies to everything everywhere -->
 <style lang="scss">
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  #app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
 
-  color: #dff5fd;
-  margin: 0;
-  font-family: Montserrat, open-sans, sans-serif;
-  width: 100%;
-}
+    color: #dff5fd;
+    margin: 0;
+    font-family: Montserrat, open-sans, sans-serif;
+    width: 100%;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .2s ease-in-out;
+  }
+
+  .fade-enter, .fade-leave-to {
+    transition: opacity .2s ease-in-out;
+    opacity: 0;
+  }
 </style>

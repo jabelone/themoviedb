@@ -28,5 +28,6 @@ export default {
 <style scoped lang="scss">
   img {
     width: 100%;
+    transition: opacity .2s ease-in-out;
   }
 </style>

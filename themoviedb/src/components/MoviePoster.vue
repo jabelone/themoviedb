@@ -29,5 +29,6 @@ export default {
   img {
     width: 100%;
     border-radius: 7px;
+    transition: opacity .2s ease-in-out;
   }
 </style>
