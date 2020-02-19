@@ -44,6 +44,9 @@ export default {
     movie: Object,
   }),
   methods: {
+    /**
+     * This method fetches the movie details for the currently open movie.
+     */
     getMovie(movieId) {
       // This URL will fetch the most popular movies for the current year
       const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${window.TMDB_API_TOKEN}`;
@@ -51,34 +54,41 @@ export default {
       axios.get(url)
         .then((response) => {
           this.movie = response.data;
+          document.title = `${this.movie.original_title} | TMDB`;
         });
     },
   },
   computed: {
+    /**
+     * This method returns the current movie ID.
+     */
     movieId() {
       return this.$route.params.id;
     },
+    /**
+     * This method returns the back arrow image.
+     */
     backArrow() {
       return backArrowImage;
     },
+    /**
+     * This method converts the X / 10 rating to a percentage as per the mockup.
+     */
     rating() {
-      /**
-         * This method converts the X / 10 rating to a percentage as per the mockup.
-         */
       return Math.trunc((this.movie.vote_average / 10) * 100);
     },
+    /**
+     * This method grabs the year of release.
+     */
     year() {
-      /**
-         * This method grabs the year of release.
-         */
       const date = new Date(this.movie.release_date);
 
       return this.movie.release_date ? `${date.getFullYear()}` : 'No Date Available';
     },
+    /**
+     * This method returns the runtime to display to the user.
+     */
     runtime() {
-      /**
-         * This method returns the runtime to display to the user.
-         */
       const duration = this.movie.runtime;
       return `${Math.floor(duration / 60)}h ${duration % 60} min`;
     },

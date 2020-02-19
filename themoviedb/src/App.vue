@@ -17,7 +17,7 @@ export default {
     $route: {
       immediate: true,
       handler(to) {
-        document.title = to.meta.title || 'The Movie DB Challenge';
+        document.title = to.meta.title || 'TMDB';
       },
     },
   },
@@ -38,11 +38,10 @@ export default {
   }
 
   .fade-enter-active, .fade-leave-active {
-    transition: opacity .2s ease-in-out;
+    transition: opacity .5s ease-in-out;
   }
 
   .fade-enter, .fade-leave-to {
-    transition: opacity .2s ease-in-out;
     opacity: 0;
   }
 

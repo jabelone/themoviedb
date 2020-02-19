@@ -12,12 +12,11 @@ export default {
   props: {
     poster: String,
   },
-  data: () => ({}),
   computed: {
+    /**
+     * Returns the full URL to the movie poster.
+     */
     moviePoster() {
-      /**
-         * Returns the full URL to the movie poster.
-         */
       return this.poster ? window.TMDB_IMAGE_BASE + this.poster : noPoster;
     },
   },

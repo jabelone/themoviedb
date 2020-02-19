@@ -44,6 +44,10 @@ export default {
     searchResults: [],
   }),
   methods: {
+    /**
+     * This method will fetch the most popular movies and store them in the data attribute
+     * 'popularMovies'.
+     */
     getPopularMovies() {
       // This URL will fetch the most popular movies for the current year
       const url = `https://api.themoviedb.org/3/movie/popular?language=en-AU&page=1&api_key=${window.TMDB_API_TOKEN}`;
@@ -51,8 +55,18 @@ export default {
       axios.get(url)
         .then((response) => {
           this.popularMovies = response.data.results;
+        })
+        .catch((error) => {
+          // eslint-disable-next-line no-alert
+          window.alert('There was an error fetching popular movies :(');
+          throw (error);
         });
     },
+    /**
+     * This method will fetch a list of results based on the searchTerm and store them in the data
+     * attribute 'searchResults'.
+     * @param {String} searchTerm
+     */
     searchMovies(searchTerm) {
       // This URL will fetch the most popular movies for the current year
       const url = `https://api.themoviedb.org/3/search/movie?language=en-AU&page=1&query=${searchTerm}&api_key=${window.TMDB_API_TOKEN}`;
@@ -60,15 +74,25 @@ export default {
       axios.get(url)
         .then((response) => {
           this.searchResults = response.data.results.slice(0, 10);
+        })
+        .catch((error) => {
+          // eslint-disable-next-line no-alert
+          window.alert('There was an error fetching your search results :(');
+          throw (error);
         });
     },
   },
   watch: {
+    /**
+     * This method watches for changes to the search term and runs the search.
+     */
     searchTerm() {
       this.searchMovies(this.searchTerm);
+      document.title = `Results for "${this.searchTerm}"`;
     },
   },
   mounted() {
+    // When this component is mounted we should fetch the popular movies.
     this.popularMovies = this.getPopularMovies();
   },
 };

@@ -23,14 +23,16 @@ export default {
   components: {
     MoviePoster,
   },
-  data: () => ({}),
   computed: {
+    /**
+     * This method converts the X / 10 rating to a percentage as per the mockup.
+     */
     rating() {
-      /**
-         * This method converts the X / 10 rating to a percentage as per the mockup.
-         */
       return Math.trunc((this.movie.vote_average / 10) * 100);
     },
+    /**
+     * This method formats the date appropriately.
+     */
     date() {
       const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December',
@@ -39,6 +41,9 @@ export default {
 
       return this.movie.release_date ? `${monthNames[date.getMonth()]} ${date.getFullYear()}` : 'No Date Available';
     },
+    /**
+     * This method computes which rating css class to use.
+     */
     ratingClass() {
       if (this.rating > 40 && this.rating < 70) {
         return 'average-rating';

@@ -14,10 +14,10 @@ export default {
   },
   data: () => ({}),
   computed: {
+    /**
+     * Returns the full URL to the movie poster.
+     */
     movieBackdrop() {
-      /**
-         * Returns the full URL to the movie poster.
-         */
       return this.backdrop ? window.TMDB_IMAGE_BASE + this.backdrop : noBackdrop;
     },
   },

@@ -1,9 +1,9 @@
-<!-- This top header component is used on the home page to render the logo etc. -->
+<!-- This top header component is used on the home page to render the logo and swooshy bars. -->
 
 <template>
   <div class="header">
     <div class="logo-container">
-      <router-link to="/">
+      <router-link to="/about">
         <img alt="Vue logo" class="header-logo" src="../assets/logo.svg">
       </router-link>
     </div>

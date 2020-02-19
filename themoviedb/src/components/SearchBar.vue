@@ -14,6 +14,10 @@ export default {
     searchString: '',
   }),
   methods: {
+    /**
+     * This emits an event to let the parent component know it has been updated (via v-model)
+     * @param event
+     */
     inputChanged(event) {
       this.$emit('input', event.target.value);
     },

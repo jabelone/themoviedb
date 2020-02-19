@@ -5,6 +5,7 @@ import './main.css';
 
 Vue.config.productionTip = false;
 
+// Initiate our main Vue instance, set up the router and mount it to #app
 new Vue({
   router,
   render: (h) => h(App),
