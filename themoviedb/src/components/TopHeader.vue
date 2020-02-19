@@ -29,6 +29,7 @@ export default {
     width: 100%;
     height: 180px;
     background: radial-gradient(#003149, #021b24);
+    overflow: hidden;
   }
 
   .logo-container {
@@ -43,11 +44,13 @@ export default {
   .header-bg-left {
     float: left;
     margin-left: -5px;
+    width: 100px;
   }
 
   .header-bg-right {
     float: right;
     margin-right: 20px;
+    width: 100px;
   }
 
   img {
@@ -59,17 +62,3 @@ export default {
     margin-top: 55px;
   }
 </style>
-
-<!-- Apparently Safari doesn't like floats used in the way above so this fixes it. -->
-<style scoped>
-  @media not all and (min-resolution:.001dpcm) { @media {
-    .header-bg-left {
-      position: absolute;
-      left: -41%;
-    }
-
-    .header-bg-right {
-      position: absolute;
-    }
-  }}
-  </style>
