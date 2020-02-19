@@ -128,9 +128,13 @@ export default {
     top: -41%;
     margin-left: 15px;
     width: 30%;
+
+    box-shadow: 3px 3px 20px #020709;
   }
 
   h1 {
+    color: #E3F4FC;
+    font-family: Montserrat, open-sans, sans-serif;
     font-size: 28px;
     text-align: left;
     width: 60vw;
@@ -143,7 +147,10 @@ export default {
   }
 
   p {
-    width: 60vw;
+    font-family: Roboto, open-sans, sans-serif;
+    font-size: 16px;
+    color: #85a8b3;
+    width: 95%;
     text-align: left;
   }
 
@@ -156,12 +163,14 @@ export default {
   }
 
   .separator {
-    margin: 0 3vw;
-    color: #0e242f;
-    height: 2px;
+    margin: 20px 5% 0 5%;
+    border-color: #0F303D;
+    color: #0F303D;
+    opacity: 0.3;
   }
 
   .subheader {
     padding-top: 20px;
+    padding-bottom: 0;
   }
 </style>

@@ -16,6 +16,7 @@ export default {
 <!-- This CSS is scoped to just this component -->
 <style scoped lang="scss">
   .subheader {
+    color: #E3F4FC;
     text-align: left;
     font-weight: bold;
     font-size: 14pt;
