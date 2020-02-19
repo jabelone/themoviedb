@@ -1,29 +1,60 @@
+<!-- This component will display a card containing basic information about the specified movie. -->
+
 <template>
   <div class="container">
-    <div class="movie-rating">{{movieRating}}%</div>
-    <img src="../assets/movie-cover.png" :alt="'Movie cover for ' + movieName"/>
-    <p class="movie-title">{{ movieName }}</p>
-    <p class="movie-date">{{ movieDate }}</p>
+    <router-link :to="`/movie/${movie.id}`">
+      <div class="movie-rating" :class="ratingClass">{{rating}}%</div>
+      <movie-poster :poster="movie.poster_path"/>
+
+      <p class="movie-title">{{ movie.original_title }}</p>
+      <p class="movie-date">{{ date }}</p>
+    </router-link>
   </div>
 </template>
 
 <script>
+import MoviePoster from './MoviePoster.vue';
+
 export default {
   name: 'MovieCard',
   props: {
-    movieId: String,
+    movie: Object,
   },
-  data: () => ({
-    movieName: 'Avengers Infinity War blah blah blahblah blah blahblah blah blah',
-    movieDate: 'April 2019',
-    movieRating: 83,
-  }),
+  components: {
+    MoviePoster,
+  },
+  data: () => ({}),
+  computed: {
+    rating() {
+      /**
+         * This method converts the X / 10 rating to a percentage as per the mockup.
+         */
+      return Math.trunc((this.movie.vote_average / 10) * 100);
+    },
+    date() {
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December',
+      ];
+      const date = new Date(this.movie.release_date);
+
+      return this.movie.release_date ? `${monthNames[date.getMonth()]} ${date.getFullYear()}` : 'No Date Available';
+    },
+    ratingClass() {
+      if (this.rating > 40 && this.rating < 70) {
+        return 'average-rating';
+      }
+      if (this.rating <= 40) {
+        return 'low-rating';
+      }
+      return 'normal-rating';
+    },
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- This CSS is scoped to just this component -->
 <style scoped lang="scss">
-  .movie-title, .movie-date {
+  a > .movie-title, a > .movie-date {
     color: #E5F7FF;
     font-family: Roboto, sans-serif;
     font-size: 14px;
@@ -35,23 +66,21 @@ export default {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: -10px;
   }
 
-  .movie-date {
+  a > .movie-date {
     padding-top: 5px;
     color: #A1D1E5;
     font-size: 12px;
   }
 
-  img {
-    width: 100%;
-  }
-
   .movie-rating {
+    color: #fff;
     font-family: Roboto, sans-serif;
     position: absolute;
-    top: 4%;
-    left: 8%;
+    top: 2%;
+    left: 3%;
     background-color: #00d76c;
     width: 40px;
 
@@ -60,5 +89,21 @@ export default {
     font-size: 12px;
     height: 20px;
     line-height: 20px;
+  }
+
+  .movie-card > p {
+    padding-left: 0;
+  }
+
+  .average-rating {
+    background: #4f00a8;
+  }
+
+  .low-rating {
+    background: #cd2c5c;
+  }
+
+  a {
+    text-decoration: none;
   }
 </style>

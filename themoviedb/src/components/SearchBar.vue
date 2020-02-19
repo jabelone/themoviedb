@@ -1,5 +1,7 @@
+<!-- This is the main search input field on the home page. -->
+
 <template>
-    <input type="text" id="search" name="Search" :placeholder="placeholder">
+    <input type="text" id="search" name="Search" :placeholder="placeholder" @input="inputChanged">
 </template>
 
 <script>
@@ -11,10 +13,15 @@ export default {
   data: () => ({
     searchString: '',
   }),
+  methods: {
+    inputChanged(event) {
+      this.$emit('input', event.target.value);
+    },
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- This CSS is scoped to just this component -->
 <style scoped lang="scss">
 input {
   color: #00d76c;

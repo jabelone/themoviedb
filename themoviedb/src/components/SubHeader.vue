@@ -1,3 +1,5 @@
+<!-- This is a very basic component which is just a sub header -->
+
 <template>
   <div class="subheader">{{text}}</div>
 </template>
@@ -11,7 +13,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- This CSS is scoped to just this component -->
 <style scoped lang="scss">
   .subheader {
     text-align: left;

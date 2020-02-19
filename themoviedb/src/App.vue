@@ -1,18 +1,17 @@
 <template>
+<!--  This is our main application container, everything inside of #app is controlled by Vue -->
   <div id="app">
-<!--    <div id="nav">-->
-<!--      <router-link to="/">Home</router-link> |-->
-<!--      <router-link to="/about">About</router-link>-->
-<!--    </div>-->
     <router-view/>
   </div>
 </template>
 
 <script>
+// This is our main vue instance
 export default {
   name: 'Home',
   components: {},
   watch: {
+    // this changes the page title for each route
     $route: {
       immediate: true,
       handler(to) {
@@ -23,6 +22,7 @@ export default {
 };
 </script>
 
+<!-- The following CSS is *not* scoped so it applies to everything everywhere -->
 <style lang="scss">
 #app {
   -webkit-font-smoothing: antialiased;
@@ -33,18 +33,5 @@ export default {
   margin: 0;
   font-family: Montserrat, open-sans, sans-serif;
   width: 100%;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

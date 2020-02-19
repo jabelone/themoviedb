@@ -1,7 +1,11 @@
+<!-- This top header component is used on the home page to render the logo etc. -->
+
 <template>
   <div class="header">
     <div class="logo-container">
-      <img alt="Vue logo" class="header-logo" src="../assets/logo.svg">
+      <router-link to="/">
+        <img alt="Vue logo" class="header-logo" src="../assets/logo.svg">
+      </router-link>
     </div>
     <img alt="header pattern" class="header-bg-left" src="../assets/header.svg">
     <img alt="header pattern" class="header-bg-right" src="../assets/header.svg">
@@ -17,6 +21,7 @@ export default {
 };
 </script>
 
+<!-- This CSS is scoped to just this component -->
 <style scoped lang="scss">
   .header {
     position: relative;

@@ -1,19 +1,25 @@
+<!-- This is the home page view. -->
+
 <template>
   <div class="home">
     <top-header/>
-    <search-bar placeholder="Search" class="search-bar"/>
+    <search-bar v-model="searchTerm" placeholder="Search" class="search-bar"/>
 
     <div class="lower-container">
       <div class="inner-lower-container">
-        <sub-header text="Popular Movies"/>
-        <div class="movie-card-container">
-          <movie-card class="movie-card"/>
-        </div>
-        <div class="movie-card-container">
-          <movie-card class="movie-card"/>
-        </div>
-        <div class="movie-card-container">
-          <movie-card class="movie-card"/>
+        <sub-header :text="searchTerm ? 'Search Results' : 'Popular Movies'"/>
+
+        <div class="movie-cards">
+          <template v-if="searchTerm">
+            <div v-for="movie in searchResults" :key="movie.id" class="movie-card-container">
+              <movie-card :movie="movie" class="movie-card"/>
+            </div>
+          </template>
+          <template v-else>
+            <div v-for="movie in popularMovies" :key="movie.id" class="movie-card-container">
+              <movie-card :movie="movie" class="movie-card"/>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -21,7 +27,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import axios from 'axios';
 import TopHeader from '@/components/TopHeader.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import SubHeader from '@/components/SubHeader.vue';
@@ -32,9 +38,43 @@ export default {
   components: {
     TopHeader, SearchBar, SubHeader, MovieCard,
   },
+  data: () => ({
+    searchTerm: '',
+    popularMovies: [],
+    searchResults: [],
+  }),
+  methods: {
+    getPopularMovies() {
+      // This URL will fetch the most popular movies for the current year
+      const url = `https://api.themoviedb.org/3/movie/popular?language=en-AU&page=1&api_key=${window.TMDB_API_TOKEN}`;
+
+      axios.get(url)
+        .then((response) => {
+          this.popularMovies = response.data.results;
+        });
+    },
+    searchMovies(searchTerm) {
+      // This URL will fetch the most popular movies for the current year
+      const url = `https://api.themoviedb.org/3/search/movie?language=en-AU&page=1&query=${searchTerm}&api_key=${window.TMDB_API_TOKEN}`;
+
+      axios.get(url)
+        .then((response) => {
+          this.searchResults = response.data.results.slice(0, 10);
+        });
+    },
+  },
+  watch: {
+    searchTerm() {
+      this.searchMovies(this.searchTerm);
+    },
+  },
+  mounted() {
+    this.popularMovies = this.getPopularMovies();
+  },
 };
 </script>
 
+<!-- This CSS is scoped to just this component -->
 <style scoped lang="scss">
   .home {
     width: 100%;
@@ -66,17 +106,21 @@ export default {
     padding-bottom: 20px;
   }
 
-  @media only screen and (min-width: 600px) {
-    .movie-card-container {
-      display: inline-block;
-      width: 33%;
-      float: left;
-      padding-bottom: 20px;
-    }
+  .movie-card-container > .movie-card {
+    position: relative;
   }
 
-  .movie-card {
-    padding-right: 10px;
-    position: relative;
+  .movie-card-container:nth-child(2n) > .movie-card {
+    padding-left: 15px;
+  }
+
+  .movie-card-container:nth-child(2n-1) > .movie-card {
+    padding-right: 15px;
+  }
+</style>
+
+<style>
+  .movie-card-container:nth-child(2n) > .movie-card > a > .movie-rating {
+    margin-left: 15px;
   }
 </style>
