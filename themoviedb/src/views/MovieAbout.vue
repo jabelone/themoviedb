@@ -13,20 +13,33 @@
       <movie-poster class="poster" :poster="movie.poster_path"/>
       <div class="info-text-container">
         <h1>{{movie.original_title}}</h1>
+        <p class="info-text">
+          {{year}} · {{rating}}% User Score <br/>
+          {{runtime}}
+        </p>
       </div>
     </div>
+
+    <hr class="separator">
+
+    <div class="overview">
+      <sub-header text="Overview"/>
+      <p>{{movie.overview}}</p>
+    </div>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import SubHeader from '@/components/SubHeader.vue';
 import MovieBackdrop from '../components/MovieBackdrop.vue';
 import MoviePoster from '../components/MoviePoster.vue';
 import backArrowImage from '../assets/back-arrow.svg';
 
 export default {
   name: 'MovieAbout',
-  components: { MovieBackdrop, MoviePoster },
+  components: { MovieBackdrop, MoviePoster, SubHeader },
   data: () => ({
     movie: Object,
   }),
@@ -48,6 +61,27 @@ export default {
     backArrow() {
       return backArrowImage;
     },
+    rating() {
+      /**
+         * This method converts the X / 10 rating to a percentage as per the mockup.
+         */
+      return Math.trunc((this.movie.vote_average / 10) * 100);
+    },
+    year() {
+      /**
+         * This method grabs the year of release.
+         */
+      const date = new Date(this.movie.release_date);
+
+      return this.movie.release_date ? `${date.getFullYear()}` : 'No Date Available';
+    },
+    runtime() {
+      /**
+         * This method returns the runtime to display to the user.
+         */
+      const duration = this.movie.runtime;
+      return `${Math.floor(duration / 60)}h ${duration % 60} min`;
+    },
   },
   mounted() {
     this.getMovie(this.movieId);
@@ -58,6 +92,8 @@ export default {
 <style scoped lang="scss">
   .movie-about {
     width: 100%;
+    margin: auto;
+    max-width: 600px;
   }
 
   .header {
@@ -75,17 +111,23 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    max-width: 30vw;
+    margin-top: -55px;
   }
 
   .info-text-container {
-    margin-left: 38vw;
+    width: 58%;
+    font-size: 12px;
+    display: inline-block;
+    padding-top: 45px;
+    margin-left: 15px;
+    vertical-align: top;
   }
 
   .poster {
-    position: absolute;
-    top: -15vw;
-    left: 3vw;
+    display: inline-block;
+    top: -41%;
+    margin-left: 15px;
+    width: 30%;
   }
 
   h1 {
@@ -93,8 +135,33 @@ export default {
     text-align: left;
     width: 60vw;
 
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-height: 2.5em;
+    line-height: 1.25em;
+    word-wrap: break-word;
+  }
+
+  p {
+    width: 60vw;
+    text-align: left;
+  }
+
+  .overview {
+    padding: 0 20px;
+  }
+
+  .overview > p {
+    width: 100%;
+  }
+
+  .separator {
+    margin: 0 3vw;
+    color: #0e242f;
+    height: 2px;
+  }
+
+  .subheader {
+    padding-top: 20px;
   }
 </style>

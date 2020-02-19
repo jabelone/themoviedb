@@ -45,4 +45,8 @@ export default {
     transition: opacity .2s ease-in-out;
     opacity: 0;
   }
+
+  body {
+    min-width: 250px;
+  }
 </style>
